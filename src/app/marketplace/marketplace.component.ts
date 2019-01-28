@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Album } from '../album.model'
+import { Album } from '../album.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-marketplace',
@@ -7,6 +8,9 @@ import { Album } from '../album.model'
   styleUrls: ['./marketplace.component.css']
 })
 export class MarketplaceComponent {
+
+  constructor(private router: Router) {}
+  
   albums: Album[] = [
     new Album("Album", "Artist", "This albums description", 1),
     new Album("Funhouse", "The Stooges",
@@ -19,5 +23,8 @@ export class MarketplaceComponent {
     "Released in 2010, this is Engerer's own rendition of the classical composer Chopin.", 5),
     new Album("Axis Bold As Love", "The Jimi Hendrix Experience",
     "Second studio album by the English-American band, released in 1967.", 6)
-  ]
+  ];
+  goToDetailPage(clickedAlbum: Album) {
+    this.router.navigate(['albums', clickedAlbum.id])
+  }
 }
