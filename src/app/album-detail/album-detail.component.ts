@@ -12,15 +12,15 @@ import { AlbumService } from '../album.service';
 })
 export class AlbumDetailComponent implements OnInit {
 
-  albumId: number;
-  albumToDisplay: Album;
+  albumId: string;
+  albumToDisplay;
 
   constructor(private route: ActivatedRoute, private location: Location, private albumService: AlbumService) {}
 
   ngOnInit() {
     this.route.params.forEach((urlParameters)=> {
-      this.albumId = parseInt(urlParameters['id']);
+    this.albumId = urlParameters['id'];
     });
-    // this.albumToDisplay = this.albumService.getAlbumById(this.albumId);
+    this.albumToDisplay = this.albumService.getAlbumById(this.albumId);
   }
 }

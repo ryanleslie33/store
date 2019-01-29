@@ -19,7 +19,7 @@ export class MarketplaceComponent implements OnInit {
   constructor(private router: Router, private albumService: AlbumService) {}
 
   goToDetailPage(clickedAlbum: Album) {
-    // this.router.navigate(['albums', clickedAlbum.id])
+    this.router.navigate(['albums', clickedAlbum]);
   }
   ngOnInit() {
     this.albums = this.albumService.getAlbums();
